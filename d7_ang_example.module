@@ -1,0 +1,52 @@
+<?php
+/**
+ * Implements hook_menu().
+*/
+
+function d7_ang_example_menu() {
+        $items = array();
+
+	$items['d7_ang_example'] = array(
+		'title' => 'Drupal AngularJS Example',
+		'page callback' => 'display_example_page',
+		'access arguments' => array('access content'),
+	);
+
+	return $items;
+}
+
+/** 
+ * hook_theme().
+ */
+
+function d7_ang_example_theme() {
+	return array(
+		'example' => array(
+			'template' => 'example',
+		),
+	);
+}
+
+
+/**
+ * welcome page callback (show the angular app)
+ */
+
+function display_example_page() {
+	drupal_add_library('angularjs', 'angularjs');
+	$path = drupal_get_path('module', 'd7_ang_example');
+
+	// pace.js to show loading
+	drupal_add_js($path . '/js/pace.min.js');
+	// pace.js template
+	//drupal_add_css($path . '/css/pace/flat-top.css');
+	drupal_add_css($path . '/css/pace/center-simple.css');
+
+	// load the rest of the app
+	drupal_add_js($path . '/js/example.gen.js');
+	drupal_add_css($path . '/css/bootstrap/bootstrap.min.css');
+	drupal_add_css($path . '/css/bootstrap/bootstrap-responsive.min.css');
+	drupal_add_css($path . '/css/example.css');
+	return theme('example');
+}
+

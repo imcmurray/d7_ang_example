@@ -1,0 +1,7 @@
+core = "7.x"
+description = "Example module showing how AngularJS can be implemented in Drupal7 via a custom module which is using Grunt as a Javascript build tool"
+
+name = "D7 AngularJS Example"
+php = "5.2.4"
+project = "d7_ang_example"
+version = "7.x-1.0"
